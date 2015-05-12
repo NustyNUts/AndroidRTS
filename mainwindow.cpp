@@ -6,13 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    numberOfData = 3;
+    numberOfData = 0;
 //    dataC.insert(0,10);
 //    dataC.insert(1,15);
 //    dataC.insert(2,5);
 //    dataT.insert(0,30);
-//    dataT.insert(0,40);
-//    dataT.insert(0,50);
+//    dataT.insert(1,40);
+//    dataT.insert(2,50);
 
     //dataC = new QVector<int>();
    // dataT = new QVector<int>();
@@ -49,7 +49,7 @@ void MainWindow::on_pushButton_clicked()//Добавить (забыл пере�
 
 void MainWindow::on_pushButton_2_clicked()//Очистка (забыл перейменовать)
 {
-
+    ui->checkRT->setText(" ");
     dataC.remove(0,dataC.size());
     dataT.remove(0,dataT.size());
     numberOfData = 0;
@@ -62,6 +62,7 @@ void MainWindow::on_pushButton_2_clicked()//Очистка (забыл пере�
     ui->checkEDF->setText("");
     ui->EDFRez->setText("");
     ui->UBRez->setText("");
+
 }
 
 void MainWindow::on_pushButton_3_clicked()//Начать тесты (забыл перейменовать)
@@ -113,13 +114,13 @@ void MainWindow::on_pushButton_3_clicked()//Начать тесты (забыл 
             if(R1<=dataT[j])
             {
                 ui->textBrowser->append("R1["+QString::number(j)+"]: "
-                                        +QString::number(R1)+"<="+QString::number(dataT[numberOfData-1-j])+" passed");
+                                        +QString::number(R1)+"<="+QString::number(dataT[j])+" passed");
                 ui->checkRT->setText("passed");
             }
             else
             {
                 ui->textBrowser->append("R1["+QString::number(j)+"]: "
-                                        +QString::number(R1)+"<="+QString::number(dataT[numberOfData-1-j])+" failed");
+                                        +QString::number(R1)+"<="+QString::number(dataT[j])+" failed");
                 ui->checkRT->setText("failed");
                 return;
             }
